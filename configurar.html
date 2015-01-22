@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Sismicapp</title>
+		<link href="css/estilos.css" rel="stylesheet">
+		 <meta name="viewport" id="viewport"
+     content="width=device-width, height=device-height,
+     initial-scale=1.0, maximum-scale=1.0,
+     user-scalable=no" />
+		<script src="phonegap.js"></script>
+	</head>
+	<body>
+		<div class="navbar">
+			<img src ="img/home.png" class="logo">
+		</div>
+		<div class="contenedor2">	
+			<br><br><br><br>
+			<div class="centrar"><h3>Configuración de notificaciones</h3></div>
+			<hr>
+			<h4 id="rangotxt">Rango: 1800(Km)</h4>
+			<input type="range" min="0" max="1800" step="10" id="rango" value="1800">
+			<h4 id="magnitudtxt">Magnitud del sismo: 2(Ml)</h4>
+			<input type="range" min="0" max="10" step="0.1" id="magnitud" value="2">
+			<br><br>
+			<h4>Notificaciones: <input type="checkbox" id="notificaciones" class="checkbox" checked="true"></h4>
+			<br><br>
+			<div class="centrar">
+				<button class="btn btn-danger" id="btn-configurar">CONFIGURAR</button>
+			</div><br>
+			<p>Con esta información solo te llegaran las notificaciones de sismos dentro de la distancia especificada respecto a tu ubicación y los sismos de magnitud superior o igual a la especificada.</p>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script  type="text/javascript" language="javascript">
+
+			function ajax(url,data,done,error){
+	            $.ajax({
+	                url: url,
+	                context : document.body,
+	                dataType: "json",
+	                type: "POST",
+	                data: data
+	            }).done(done).error(error);
+	        }
+
+	        function cargar_settings(){
+	        	ajax(
+        			base_url+'sismos/usuarios/settings',
+        			{
+        				usuario: localStorage.usuario
+        			},
+        			function(data){
+        				if(data.STATUS == 'OK'){
+        					$('#rango').val(data.DATOS.rango);
+        					$('#magnitud').val(data.DATOS.magnitud);
+        					if(data.DATOS.notificaciones == "true") $('#notificaciones').attr("checked", true );
+        					else $('#notificaciones').attr("checked", false );
+        					if(parseFloat($(this).val()) > 3) $('#magnitudtxt').html('Magnitud del sismo: '+$('#magnitud').val()+'(Mw)');
+	        				else $('#magnitudtxt').html('Magnitud del sismo: '+$('#magnitud').val()+'(Ml)');
+	        				$('#rangotxt').html('Rango: '+$('#rango').val()+'(Km)');
+        				}
+        			},
+        			function(error){
+        				navigator.notification.alert(
+						    '¡Ups!, Houston tenemos un problema, al parecer tu conexión a internet está fallando.',  // message
+						    null,
+						    'Error',            // title
+						    'OK'                  // buttonName
+						);
+        			}
+        		);
+	        }
+
+	        $( document ).ready(function() {
+	        	cargar_settings();
+
+	        	$( ".logo" ).on( "click", function(){window.location.assign("index.html");});
+	        	
+	        	$( "#btn-configurar" ).on( "click", function(){
+	        		ajax(
+	        			base_url+'sismos/usuarios/restringir',
+	        			{
+	        				usuario: localStorage.usuario,
+	        				rango: $("#rango").val(),
+	        				magnitud: $("#magnitud").val(),
+	        				notificaciones: $("#notificaciones").is(":checked")
+	        			},
+	        			function(data){
+	        				if(data.STATUS == 'OK'){
+	        					navigator.notification.alert(
+								    'Configuración realizada.',  // message
+								    null,
+								    'información',            // title
+								    'OK'                  // buttonName
+								);
+	        				}
+	        			},
+	        			function(error){
+	        				navigator.notification.alert(
+							    '¡Ups!, Houston tenemos un problema, al parecer tu conexión a internet está fallando.',  // message
+							    null,
+							    'Error',            // title
+							    'OK'                  // buttonName
+							);
+	        			}
+	        		);
+	        	});
+
+	        	$("#rango").on("input change", function() { 
+	        		$('#rangotxt').html('Rango: '+$(this).val()+'(Km)');
+	        	});
+
+	        	$("#magnitud").on("input change", function() {
+	        		if(parseFloat($(this).val()) > 3) $('#magnitudtxt').html('Magnitud del sismo: '+$(this).val()+'(Mw)');
+	        		else $('#magnitudtxt').html('Magnitud del sismo: '+$(this).val()+'(Ml)');
+	        	});
+	        });
+		</script>
+	</body>
+</html>

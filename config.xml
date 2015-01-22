@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.phonegap.sismicapp"
+        version     = "1.0.0" >
+
+    <name>Sismicapp</name>
+
+    <description>
+        Esta aplicación detecta los sismos que son reportados por la Red Sismológica Nacional de Colombia e informa en tiempo real. 
+    </description>
+
+    <author href="https://build.phonegap.com" email="jsbeleno@gmail.com">
+        Juan Sebastián Beleño Díaz
+    </author>
+	
+    <access origin="*" />
+
+	<icon src="img/logo.png" />
+	
+	<preference name="permissions" value="none" />
+	
+	<preference name="Orientation" value="portrait" />
+	
+	<gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4" />
+	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.10" />
+    <gap:plugin name="org.apache.cordova.dialogs"/>
+</widget>
