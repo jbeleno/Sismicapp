@@ -91,26 +91,6 @@
 							);
 	        }
 
-	        function ripple(e) {
-			    var target = e.target;
-			    if (target.className !== 'navbar') return false;
-			    var rect = target.getBoundingClientRect();
-			    var ripple = target.querySelector('.ripple');
-			    if (!ripple) {
-			        ripple = document.createElement('span');
-			        ripple.className = 'ripple';
-			        ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height) + 'px';
-			        target.appendChild(ripple);
-			    }
-			    ripple.classList.remove('show');
-			    var top = e.pageY - rect.top - ripple.offsetHeight / 2 - document.body.scrollTop;
-			    var left = e.pageX - rect.left - ripple.offsetWidth / 2 - document.body.scrollLeft;
-			    ripple.style.top = top + 'px';
-			    ripple.style.left = left + 'px';
-			    ripple.classList.add('show');
-			    return false;
-			}
-
 			function registrar(){
 				//alert('registra');
 				if ( device.platform == 'android' || device.platform == 'Android' || device.platform == "amazon-fireos" ){
@@ -195,7 +175,6 @@
 
 	        $( document ).ready(function() {
 	        	$( "#info" ).on( "click", informacion);
-	        	$( ".navbar" ).on( "click", ripple);
 	        	$( ".logo" ).on( "click", function(){window.location.assign("index.html");});
 	        	$( "#settings" ).on( "click", function(){window.location.assign("configurar.html");});
 	        	ajax(
