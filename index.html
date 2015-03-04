@@ -178,7 +178,7 @@
 	        	$( ".logo" ).on( "click", function(){window.location.assign("index.html");});
 	        	$( "#settings" ).on( "click", function(){window.location.assign("configurar.html");});
 	        	ajax(
-	        			'http://174.129.24.91/sismos/sismos/ver',
+	        			base_url+'sismos/sismos/ver',
 	        			null,
 	        			function(data){
 	        				pushNotification = window.plugins.pushNotification;
