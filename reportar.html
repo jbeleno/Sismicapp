@@ -77,11 +77,7 @@
 
 			function onDeviceReady() {
 				navigator.geolocation.getCurrentPosition(getlocation, failgeo); 
-			}
-
-	        $( document ).ready(function() {
-	        	 
-	        	$( "#btn-enviar" ).on( "click", 
+				$( "#btn-enviar" ).on( "click", 
 	        		function(){
 	        			$('#btn-enviar').attr('disabled','disabled');
 		        		ajax(
@@ -123,7 +119,7 @@
 	        	);
 	        	$( ".logo" ).on( "click", function(){window.location.assign("index.html");});
 	        	cargar_pisos();
-	        });
+			}
 		</script>
 	</body>
 </html>
