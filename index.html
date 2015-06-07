@@ -43,7 +43,7 @@
 
 	        function registrar_usuario(){
 	        	ajax(
-		        	base_url+'sismos/usuarios/nuevo',
+		        	base_url+'usuarios/nuevo',
 		        	{
 		        		'gcm_id' : localStorage.regid,
 		        		'latitud' : latitud,
@@ -67,7 +67,7 @@
 
 	        function actualizar_ubicacion(){
 	        	ajax(
-		        	base_url+'sismos/usuarios/actualizar',
+		        	base_url+'usuarios/actualizar',
 		        	{
 		        		'id' : localStorage.usuario,
 		        		'latitud' : latitud,
@@ -175,7 +175,7 @@
 	        	$( ".logo" ).on( "click", function(){window.location.assign("index.html");});
 	        	$( "#settings" ).on( "click", function(){window.location.assign("configurar.html");});
 	        	ajax(
-        			base_url+'sismos/sismos/ver',
+        			base_url+'sismos/ver',
         			null,
         			function(data){
         				pushNotification = window.plugins.pushNotification;

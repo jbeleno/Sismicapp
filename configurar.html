@@ -45,7 +45,7 @@
 
 	        function cargar_settings(){
 	        	ajax(
-        			base_url+'sismos/usuarios/settings',
+        			base_url+'usuarios/settings',
         			{
         				usuario: localStorage.usuario
         			},
@@ -78,7 +78,7 @@
 	        	
 	        	$( "#btn-configurar" ).on( "click", function(){
 	        		ajax(
-	        			base_url+'sismos/usuarios/restringir',
+	        			base_url+'usuarios/restringir',
 	        			{
 	        				usuario: localStorage.usuario,
 	        				rango: $("#rango").val(),

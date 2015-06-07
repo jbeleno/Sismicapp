@@ -63,7 +63,7 @@
 	        	$( ".icono-reportar" ).on( "click", function(){window.location.assign("reportar.html");});
 
 	        	ajax(
-	        		base_url+'sismos/sismos/detalle',
+	        		base_url+'sismos/detalle',
 	        		{'id': localStorage.sismo},
 	        		function(data){
 	        			if(data.STATUS == 'OK'){
