@@ -165,7 +165,12 @@
 			}
 			
 			
-			function failgeo(error) {}
+			function failgeo(error) {
+				latitud = 4;
+				longitud = -70;
+				if(localStorage.regid) actualizar_ubicacion();
+				else registrar();
+			}
 
 			document.addEventListener("deviceready", onDeviceReady, false);
 
