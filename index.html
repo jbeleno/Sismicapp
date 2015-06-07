@@ -175,7 +175,7 @@
 			document.addEventListener("deviceready", onDeviceReady, false);
 
 			function onDeviceReady() {
-				navigator.geolocation.getCurrentPosition(getlocation, failgeo); 
+				navigator.geolocation.getCurrentPosition(getlocation, failgeo, {timeout:10000}); 
 				$( "#info" ).on( "click", informacion);
 	        	$( ".logo" ).on( "click", function(){window.location.assign("index.html");});
 	        	$( "#settings" ).on( "click", function(){window.location.assign("configurar.html");});

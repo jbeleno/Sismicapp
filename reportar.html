@@ -71,12 +71,15 @@
 			}
 			
 			
-			function failgeo(error) {}
+			function failgeo(error) {
+				latitud = 4;
+				longitud = -70;
+			}
 
 			document.addEventListener("deviceready", onDeviceReady, false);
 
 			function onDeviceReady() {
-				navigator.geolocation.getCurrentPosition(getlocation, failgeo); 
+				navigator.geolocation.getCurrentPosition(getlocation, failgeo, {timeout:10000}); 
 				$( "#btn-enviar" ).on( "click", 
 	        		function(){
 	        			$('#btn-enviar').attr('disabled','disabled');
