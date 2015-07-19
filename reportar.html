@@ -79,7 +79,7 @@
 			document.addEventListener("deviceready", onDeviceReady, false);
 
 			function onDeviceReady() {
-				navigator.geolocation.getCurrentPosition(getlocation, failgeo, {timeout:10000}); 
+				navigator.geolocation.getCurrentPosition(getlocation, failgeo, { maximumAge: 3000, timeout: 3000, enableHighAccuracy: true }); 
 				$( "#btn-enviar" ).on( "click", 
 	        		function(){
 	        			$('#btn-enviar').attr('disabled','disabled');
