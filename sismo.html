@@ -4,10 +4,11 @@
 		<meta charset="UTF-8">
 		<title>Sismicapp</title>
 		<link href="css/estilos.css" rel="stylesheet">
-		 <meta name="viewport" id="viewport"
-     content="width=device-width, height=device-height,
-     initial-scale=1.0, maximum-scale=1.0,
-     user-scalable=no" />
+		<link href='css/mapbox.css' rel='stylesheet' />
+		<meta name="viewport" id="viewport"
+	     content="width=device-width, height=device-height,
+	     initial-scale=1.0, maximum-scale=1.0,
+	     user-scalable=no" />
 		<script src="phonegap.js"></script>
 	</head>
 	<body>
@@ -25,8 +26,8 @@
 				<div class="data-sismo"><img src="img/ancla.png" class="icono-sismo"> <div class="vcentrar enlinea titulo" id="profundidad"> PROFUNDIDAD</div></div>
 			</div>
 		</div>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4pfbZfq_AuKvtmF-73fwH54yRJV9Nz3g"> </script>
 		<script src="js/jquery.js"></script>
+		<script src='js/mapbox.js'></script>
 		<script  type="text/javascript" language="javascript">
 
 			function ajax(url,data,done,error){
@@ -40,22 +41,25 @@
 	        }
 
 	        function cargar_mapa(latitude, longitude, lugar){
-	        	var latLong = new google.maps.LatLng(latitude, longitude);
- 
-		        var mapOptions = {
-		            center: latLong,
-		            disableDefaultUI: true,
-		            zoom: 10,
-		            mapTypeId: google.maps.MapTypeId.ROADMAP
-		        };
-		 
-		        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-			
-		        var marker = new google.maps.Marker({
-		              position: latLong,
-		              map: map,
-		              title: lugar
-		        });
+	        	L.mapbox.accessToken = 'pk.eyJ1IjoiamJlbGVubyIsImEiOiJRbGhXRkhVIn0.h2cvX1dQMRnGDT3OBppm3A';
+				var map = L.mapbox.map('map', 'jbeleno.mokc5ll5').setView([latitude, longitude], 10);
+
+				L.mapbox.featureLayer({
+				    type: 'Feature',
+				    geometry: {
+				        type: 'Point',
+				        coordinates: [
+				          	longitude,
+				           	latitude
+				        ]
+				    },
+				    properties: {
+				        title: 'Epicentro',
+				        description: lugar,
+				        'marker-size': 'large',
+				        'marker-color': '#FF5252'
+				    }
+				}).addTo(map);
 	        }
 
 	        $( document ).ready(function() {
