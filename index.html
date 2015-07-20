@@ -66,20 +66,22 @@
 	        }
 
 	        function actualizar_ubicacion(){
-	        	ajax(
-		        	base_url+'usuarios/actualizar',
-		        	{
-		        		'id' : localStorage.usuario,
-		        		'latitud' : latitud,
-		        		'longitud' : longitud
-		        	},
-		        	function(data){
+	        	if(latitud != 4 && longitud != -70){
+		        	ajax(
+			        	base_url+'usuarios/actualizar',
+			        	{
+			        		'id' : localStorage.usuario,
+			        		'latitud' : latitud,
+			        		'longitud' : longitud
+			        	},
+			        	function(data){
 
-		        	},
-		        	function(error){
+			        	},
+			        	function(error){
 
-		        	}
-	        	);
+			        	}
+		        	);
+		        }
 	        }
 
 	        function informacion(){
@@ -175,7 +177,7 @@
 			document.addEventListener("deviceready", onDeviceReady, false);
 
 			function onDeviceReady() {
-				navigator.geolocation.getCurrentPosition(getlocation, failgeo, { maximumAge: 3000, timeout: 3000, enableHighAccuracy: true }); 
+				navigator.geolocation.getCurrentPosition(getlocation, failgeo, { maximumAge: 5000, timeout: 5000, enableHighAccuracy: true }); 
 				$( "#info" ).on( "click", informacion);
 	        	$( ".logo" ).on( "click", function(){window.location.assign("index.html");});
 	        	$( "#settings" ).on( "click", function(){window.location.assign("configurar.html");});

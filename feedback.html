@@ -16,36 +16,15 @@
 		</div>
 		<div class="contenedor2">	
 			<br><br><br><br>
-			<div class="centrar"><h3>¿Sintió un sismo? ¡Repórtelo!</h3></div>
-			<br>
-			<select id="escala">
-				<option value="">¿Cómo se sintió el sismo?</option>
-				<option value="Debil">Debil</option>
-				<option value="Moderado">Moderado</option>
-				<option value="Fuerte">Fuerte</option>
-				<option value="Muy Fuerte">Muy Fuerte</option>
-			</select>
-			<select id="lugar">
-				<option value="">¿Dónde se encontraba?</option>
-				<option value="Dentro de inmueble">Dentro de inmueble</option>
-				<option value="En la calle">En la calle</option>
-				<option value="Aire libre">Aire libre</option>
-			</select>
-			<select id="piso">
-			</select>
-			<select id="actividad">
-				<option value="">¿Qué clase de actividad realizaba?</option>
-				<option value="Reposo">Reposo</option>
-				<option value="Movimiento">Movimiento</option>
-			</select>
-			<br>
+			<div class="centrar"><h3>Dejanos tus comentarios acerca de sismicapp</h3></div>
+			<textarea rows="6" placeholder="Escribenos acerca de errores en la aplicación, comentarios para mejorar, características que quieras que estén presentes en la aplicación, etc..." id="mensaje"></textarea>
+			<br><br>
 			<div class="centrar">
 				<button class="btn btn-danger" id="btn-enviar">ENVIAR</button>
 			</div>
 		</div>
 		<script src="js/jquery.js"></script>
 		<script  type="text/javascript" language="javascript">
-			var latitud, longitud;
 			
 			function ajax(url,data,done,error){
 	            $.ajax({
@@ -57,48 +36,22 @@
 	            }).done(done).error(error);
 	        }
 
-	        function cargar_pisos(){
-	        	var contenido = '<option value="">¿En qué piso se encontraba?</option>';
-	        	for(var i=0; i<50;i++){
-	        		contenido += '<option value="'+i+'">'+i+'</option>';
-	        	}
-	        	$('#piso').html(contenido);
-	        }
-
-	        function getlocation(pos) {
-				latitud = pos.coords.latitude;
-				longitud = pos.coords.longitude;
-			}
-			
-			
-			function failgeo(error) {
-				latitud = 4;
-				longitud = -70;
-			}
-
 			document.addEventListener("deviceready", onDeviceReady, false);
 
 			function onDeviceReady() {
-				navigator.geolocation.getCurrentPosition(getlocation, failgeo, { maximumAge: 5000, timeout: 5000, enableHighAccuracy: true }); 
 				$( "#btn-enviar" ).on( "click", 
 	        		function(){
 	        			$('#btn-enviar').attr('disabled','disabled');
 		        		ajax(
-		        			base_url+'reportes/nuevo',
+		        			base_url+'feedback/nuevo',
 		        			{
-		        				'sismo' : localStorage.sismo,
-		        				'latitud': latitud,
-		        				'longitud': longitud,
 		        				'id_usuario': localStorage.usuario,
-		        				'escala': $('#escala').find("option:selected").val(),
-		        				'lugar': $('#lugar').find("option:selected").val(),
-		        				'piso': $('#piso').find("option:selected").val(),
-		        				'actividad': $('#actividad').find("option:selected").val()
+		        				'mensaje': $('#mensaje').val()
 		        			},
 		        			function(data){
 		        				if(data.STATUS == 'OK'){
 		        					navigator.notification.alert(
-									    'Gracias por reportar el sismo.',  // message
+									    'Gracias por inspirarnos a mejorar.',  // message
 									    null,
 									    'Información', // title
 									    'OK' // buttonName
@@ -121,8 +74,7 @@
 					}
 	        	);
 	        	$( ".logo" ).on( "click", function(){window.location.assign("index.html");});
-	        	cargar_pisos();
-			}
+	        }
 		</script>
 	</body>
 </html>
