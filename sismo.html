@@ -74,20 +74,20 @@
 	        	$( ".icono-reportar" ).on( "click", function(){window.location.assign("reportar.html");});
 
 	        	$( "#btn-fb" ).on( "click", function(){
-	        		window.plugins.socialsharing.shareViaTwitter(
+	        		window.plugins.socialsharing.shareViaFacebook(
 	        			mensaje, 
-	        			"https://pbs.twimg.com/profile_images/614463586442813442/-PR4mqvB.png", 
-	        			"http://www.sismicapp.com/"
+	        			null /* img */, 
+	        			"http://www.sismicapp.com/", 
+	        			function() {console.log('share ok')}, 
+	        			function(errormsg){alert(errormsg)}
 	        		);
 	        	});
 
 	        	$( "#btn-tw" ).on( "click", function(){
-	        		window.plugins.socialsharing.shareViaFacebook(
+	        		window.plugins.socialsharing.shareViaTwitter(
 	        			mensaje, 
-	        			"https://pbs.twimg.com/profile_images/614463586442813442/-PR4mqvB.png", 
-	        			"http://www.sismicapp.com/", 
-	        			function() {console.log('share ok')}, 
-	        			function(errormsg){alert(errormsg)}
+	        			null /* img */, 
+	        			"http://www.sismicapp.com/"
 	        		);
 	        	});
 
@@ -105,7 +105,7 @@
 	        				else
 	        					$('#magnitud').html(data.DATOS.magnitud_richter+' (Richter)');
 
-	        				mensaje = 'Sismo de '+$('#magnitud').html()+' tuvo lugar hoy ('+$('#fecha').html()+') con epicentro cercano a '+$('#lugar').html()+' y con profundidad de '+$('#profundidad').html();
+	        				mensaje = 'Sismo de '+$('#magnitud').html()+' tuvo lugar el '+$('#fecha').html()+' con epicentro cercano a '+$('#lugar').html()+' y profundidad de '+$('#profundidad').html();
 	        			}
 	        		},
 	        		function(){
