@@ -14,13 +14,13 @@
         Juan Sebastián Beleño Díaz
     </author>
 	
-    <access origin="*" />
+    <access origin="http://www.sismicapp.com" />
 
 	<icon src="img/logo.png" />
 	
 	<preference name="permissions" value="none" />
 	
-	<preference name="Orientation" value="portrait" />
+	<preference name="orientation" value="portrait" />
 	
 	<gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4" />
