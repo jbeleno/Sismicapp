@@ -75,9 +75,9 @@
 
 	        	$( "#btn-fb" ).on( "click", function(){
 	        		window.plugins.socialsharing.shareViaFacebook(
-	        			mensaje+' - @sismicapp', 
+	        			mensaje, 
 	        			null /* img */, 
-	        			null /* url */, 
+	        			"http://www.sismicapp.com/", 
 	        			function() {console.log('share ok')}, 
 	        			function(errormsg){alert(errormsg)}
 	        		);
