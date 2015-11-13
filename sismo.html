@@ -75,9 +75,9 @@
 
 	        	$( "#btn-fb" ).on( "click", function(){
 	        		window.plugins.socialsharing.shareViaFacebook(
-	        			mensaje, 
+	        			mensaje+' - @sismicapp', 
 	        			null /* img */, 
-	        			"http://www.sismicapp.com/", 
+	        			null /* url */, 
 	        			function() {console.log('share ok')}, 
 	        			function(errormsg){alert(errormsg)}
 	        		);
@@ -85,9 +85,9 @@
 
 	        	$( "#btn-tw" ).on( "click", function(){
 	        		window.plugins.socialsharing.shareViaTwitter(
-	        			mensaje, 
+	        			mensaje+' - @sismicapp', 
 	        			null /* img */, 
-	        			"http://www.sismicapp.com/"
+	        			null /* url */
 	        		);
 	        	});
 
@@ -105,7 +105,7 @@
 	        				else
 	        					$('#magnitud').html(data.DATOS.magnitud_richter+' (Richter)');
 
-	        				mensaje = 'Sismo de '+$('#magnitud').html()+' tuvo lugar el '+$('#fecha').html()+' con epicentro cercano a '+$('#lugar').html()+' y profundidad de '+$('#profundidad').html();
+	        				mensaje = 'Sismo de '+$('#magnitud').html()+' tuvo lugar hoy con epicentro cercano a '+$('#lugar').html()+' y profundidad de '+$('#profundidad').html();
 	        			}
 	        		},
 	        		function(){
