@@ -14,7 +14,7 @@
         Juan Sebastián Beleño Díaz
     </author>
 	
-    <access origin="http://www.sismicapp.com" />
+    <access origin="*" />
 
 	<icon src="img/logo.png" />
 	
@@ -23,6 +23,7 @@
 	<preference name="orientation" value="portrait" />
 	
 	<gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4" />
 	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.2" />
     <gap:plugin name="org.apache.cordova.dialogs"/>
