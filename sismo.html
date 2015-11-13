@@ -24,12 +24,18 @@
 				<div class="data-sismo"><img src="img/fecha.png" class="icono-sismo"> <div class="vcentrar enlinea titulo" id="fecha"> FECHA</div></div>
 				<div class="data-sismo"><img src="img/regla.png" class="icono-sismo"> <div class="vcentrar enlinea titulo" id="magnitud"> MAGNITUD</div></div>
 				<div class="data-sismo"><img src="img/ancla.png" class="icono-sismo"> <div class="vcentrar enlinea titulo" id="profundidad"> PROFUNDIDAD</div></div>
+				<div class="centrar">
+					<br>
+					<img id="btn-fb" class="icono-redes"  src="img/share_fb.png">
+					<img id="btn-tw" class="icono-redes" src="img/share_tw.png">
+				</div>
 			</div>
 		</div>
 		<script src="js/jquery.js"></script>
 		<script src='js/mapbox.js'></script>
 		<script  type="text/javascript" language="javascript">
 			var base_url = "http://52.27.16.14/sismicapp/";
+			var mensaje = "Sismicapp: La app de sismos en Colombia, entérate en tiempo real de los sismos que ocurren en el territorio nacional.";
 
 			function ajax(url,data,done,error){
 	            $.ajax({
@@ -67,6 +73,24 @@
 	        	$( ".logo" ).on( "click", function(){window.location.assign("index.html");});
 	        	$( ".icono-reportar" ).on( "click", function(){window.location.assign("reportar.html");});
 
+	        	$( "#btn-fb" ).on( "click", function(){
+	        		window.plugins.socialsharing.shareViaTwitter(
+	        			mensaje, 
+	        			"https://pbs.twimg.com/profile_images/614463586442813442/-PR4mqvB.png", 
+	        			"http://www.sismicapp.com/"
+	        		);
+	        	});
+
+	        	$( "#btn-tw" ).on( "click", function(){
+	        		window.plugins.socialsharing.shareViaFacebook(
+	        			mensaje, 
+	        			"https://pbs.twimg.com/profile_images/614463586442813442/-PR4mqvB.png", 
+	        			"http://www.sismicapp.com/", 
+	        			function() {console.log('share ok')}, 
+	        			function(errormsg){alert(errormsg)}
+	        		);
+	        	});
+
 	        	ajax(
 	        		base_url+'sismos/detalle',
 	        		{'id': localStorage.sismo},
@@ -80,6 +104,8 @@
 	        					$('#magnitud').html(data.DATOS.magnitud+' (Mw)');
 	        				else
 	        					$('#magnitud').html(data.DATOS.magnitud_richter+' (Richter)');
+
+	        				mensaje = 'Sismo de '+$('#magnitud').html()+' tuvo lugar hoy ('+$('#fecha').html()+') con epicentro cercano a '+$('#lugar').html()+' y con profundidad de '+$('#profundidad').html();
 	        			}
 	        		},
 	        		function(){

@@ -4,6 +4,13 @@ html, body{
 	margin:0px;
 }
 
+.icono-redes{
+	height: auto;
+	width: 128px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
 .navbar{
 	background: #F44336;
 	color: white;
