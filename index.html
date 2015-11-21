@@ -82,15 +82,6 @@
 		        }
 	        }
 
-	        function informacion(){
-	        	navigator.notification.alert(
-							    'La información que está en los circulos rojos es la magnitud del sismo en la escala de Richter para sismos iguales o inferiores a 3.0 (Ml), para sismos de mayor magnitud se usa la escala sismológica de magnitud de momento (Mw).',  // message
-							    null,
-							    'Información',            // title
-							    'OK'                  // buttonName
-							);
-	        }
-
 			function registrar(){
 				//alert('registra');
 				if ( device.platform == 'android' || device.platform == 'Android' || device.platform == "amazon-fireos" ){
@@ -101,6 +92,16 @@
 				    {
 				        "senderID": ProjectKey,
 				        "ecb":"onNotification"
+				    });
+				}else{
+					pushNotification.register(
+				    tokenHandler,
+				    errorHandler,
+				    {
+				        "badge":"true",
+				        "sound":"true",
+				        "alert":"true",
+				        "ecb":"onNotificationAPN"
 				    });
 				}
 			}
@@ -150,6 +151,33 @@
 							);
 				    break;
 			  	}
+			}
+
+			// iOS
+			function onNotificationAPN (event) {
+			    if ( event.alert )
+			    {
+			        navigator.notification.alert(event.alert);
+			    }
+
+			    if ( event.sound )
+			    {
+			        var snd = new Media(event.sound);
+			        snd.play();
+			    }
+
+			    if ( event.badge )
+			    {
+			        pushNotification.setApplicationIconBadgeNumber(null, null, event.badge);
+			    }
+			}
+
+			function tokenHandler (result) {
+			    // Your iOS push server needs to know the token before it can push to this device
+			    // here is where you might want to send it the token for later use.
+			    console.log('device token = ' + result);
+			    localStorage.regid = result;
+				registrar_usuario();
 			}
 
 			function mostrar(identificador){
