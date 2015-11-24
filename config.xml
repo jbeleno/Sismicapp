@@ -23,7 +23,6 @@
 	<preference name="orientation" value="portrait" />
 	
 	<gap:plugin name="org.apache.cordova.device" />
-    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="com.phonegap.plugins.pushplugin"/>
 	<gap:plugin name="org.apache.cordova.geolocation"/>
     <gap:plugin name="org.apache.cordova.dialogs"/>
