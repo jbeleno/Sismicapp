@@ -93,10 +93,7 @@
 
 	        	ajax(
 	        		base_url+'sismos/detalle',
-	        		{
-	        			'id': localStorage.sismo,
-	        			'usuario' : localStorage.usuario
-	        		},
+	        		{'id': localStorage.sismo},
 	        		function(data){
 	        			if(data.STATUS == 'OK'){
 	        				cargar_mapa(data.DATOS.latitud, data.DATOS.longitud, data.DATOS.epicentro)

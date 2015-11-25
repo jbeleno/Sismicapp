@@ -68,16 +68,27 @@
 	        }
 
 	        function actualizar_ubicacion(){
-	        	ajax(
-		        	base_url+'usuarios/actualizar',
-		        	{
-		        		'id' : localStorage.usuario,
-		        		'latitud' : latitud,
-		        		'longitud' : longitud
-		        	},
-		        	function(data){},
-		        	function(error){}
-	        	);
+	        	if(latitud != 4 && longitud != -70){
+		        	ajax(
+			        	base_url+'usuarios/actualizar',
+			        	{
+			        		'id' : localStorage.usuario,
+			        		'latitud' : latitud,
+			        		'longitud' : longitud
+			        	},
+			        	function(data){},
+			        	function(error){}
+		        	);
+		        }
+	        }
+
+	        function informacion(){
+	        	navigator.notification.alert(
+							    'La información que está en los circulos rojos es la magnitud del sismo en la escala de Richter para sismos iguales o inferiores a 3.0 (Ml), para sismos de mayor magnitud se usa la escala sismológica de magnitud de momento (Mw).',  // message
+							    null,
+							    'Información',            // title
+							    'OK'                  // buttonName
+							);
 	        }
 
 			function registrar(){
