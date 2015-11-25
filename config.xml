@@ -21,11 +21,8 @@
 	<preference name="permissions" value="none" />
 	
 	<preference name="orientation" value="portrait" />
-
-	<gap:config-file platform="android" parent="/manifest">
-	     <application android:debuggable="true" />
-	</gap:config-file>
 	
+	<plugin name="com.jamiestarke.webviewdebug" spec="1.0.8" source="pgb" />
 	<gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="com.phonegap.plugins.pushplugin"/>
 	<gap:plugin name="org.apache.cordova.geolocation"/>
