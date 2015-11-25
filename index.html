@@ -68,18 +68,16 @@
 	        }
 
 	        function actualizar_ubicacion(){
-	        	if(latitud != 4 && longitud != -70){
-		        	ajax(
-			        	base_url+'usuarios/actualizar',
-			        	{
-			        		'id' : localStorage.usuario,
-			        		'latitud' : latitud,
-			        		'longitud' : longitud
-			        	},
-			        	function(data){},
-			        	function(error){}
-		        	);
-		        }
+	        	ajax(
+		        	base_url+'usuarios/actualizar',
+		        	{
+		        		'id' : localStorage.usuario,
+		        		'latitud' : latitud,
+		        		'longitud' : longitud
+		        	},
+		        	function(data){},
+		        	function(error){}
+	        	);
 	        }
 
 	        function informacion(){
