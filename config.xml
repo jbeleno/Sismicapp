@@ -21,9 +21,8 @@
 	<preference name="permissions" value="none" />
 	
 	<preference name="orientation" value="portrait" />
-	<preference name="android-targetSdkVersion" value="19" />
-	
-	<plugin name="com.jamiestarke.webviewdebug" spec="1.0.8" source="pgb" />
+
+	<gap:plugin name="cordova-plugin-whitelist" source="npm" />
 	<gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="com.phonegap.plugins.pushplugin"/>
 	<gap:plugin name="org.apache.cordova.geolocation"/>
