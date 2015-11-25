@@ -21,6 +21,7 @@
 	<preference name="permissions" value="none" />
 	
 	<preference name="orientation" value="portrait" />
+	<preference name="android-targetSdkVersion" value="19" />
 	
 	<plugin name="com.jamiestarke.webviewdebug" spec="1.0.8" source="pgb" />
 	<gap:plugin name="org.apache.cordova.device" />
