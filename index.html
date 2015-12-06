@@ -170,25 +170,27 @@
 	        	$( "#settings" ).on( "click", function(){window.location.assign("configurar.html");});
 	        	ajax(
         			base_url+'sismos/ver',
-        			null,
+        			{'usuario': localStorage.usuario},
         			function(data){
         				pushNotification = window.plugins.pushNotification;
         				if(data.STATUS == 'OK'){
         					var contenido = '';
         					for(var i = 0; i < data.DATOS.length; i++){
-        						contenido += '<div onclick="mostrar('+data.DATOS[i].id+')">';
-        						contenido += '<div class="col-2 enlinea">';
-        						if(parseFloat(data.DATOS[i].magnitud) > 0)
-        							contenido += '<div class="magnitud centrar">'+data.DATOS[i].magnitud+'</div>';
-        						else
-        							contenido += '<div class="magnitud centrar">'+data.DATOS[i].magnitud_richter+'</div>';
-        						contenido += '</div>';
-        						contenido += '<div class="col-8 enlinea">';
-        						contenido += '<div class="titulo">'+data.DATOS[i].epicentro+'</div>';
-        						contenido += '<div class="subtitulo">'+data.DATOS[i].fecha+'</div>';
-        						contenido += '<hr>';
-        						contenido += '</div>';
-        						contenido += '</div>';
+        						if(data.DATOS[i].tipo == "sismo"){
+	        						contenido += '<div onclick="mostrar('+data.DATOS[i].id+')">';
+	        						contenido += '<div class="col-2 enlinea">';
+	        						if(parseFloat(data.DATOS[i].magnitud) > 0)
+	        							contenido += '<div class="magnitud centrar">'+data.DATOS[i].magnitud+'</div>';
+	        						else
+	        							contenido += '<div class="magnitud centrar">'+data.DATOS[i].magnitud_richter+'</div>';
+	        						contenido += '</div>';
+	        						contenido += '<div class="col-8 enlinea">';
+	        						contenido += '<div class="titulo">'+data.DATOS[i].epicentro+'</div>';
+	        						contenido += '<div class="subtitulo">'+data.DATOS[i].fecha+'</div>';
+	        						contenido += '<hr>';
+	        						contenido += '</div>';
+	        						contenido += '</div>';
+	        					}
         					}
         					$('.contenedor').html(contenido);
         				}
