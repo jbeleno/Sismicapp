@@ -19,7 +19,7 @@
 		<br><br><br><br>
 		<div class="contenedor">
 			<div class="centrar">
-				<br><br><br><br>	
+				<br><br><br><br>
 				<div id="loadingProgressG" style="display:inline-flex;">
 					<div id="loadingProgressG_1" class="loadingProgressG">
 					</div>
@@ -190,6 +190,8 @@
 	        						contenido += '<hr>';
 	        						contenido += '</div>';
 	        						contenido += '</div>';
+	        					}else{
+	        						contenido += data.DATOS[i].banner;
 	        					}
         					}
         					$('.contenedor').html(contenido);
