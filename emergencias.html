@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Sismicapp</title>
+		<link href="css/estilos.css" rel="stylesheet">
+		 <meta name="viewport" id="viewport"
+     content="width=device-width, height=device-height,
+     initial-scale=1.0, maximum-scale=1.0,
+     user-scalable=no" />
+		<script src="phonegap.js"></script>
+	</head>
+	<body>
+		<div class="navbar">
+			<img src ="img/home.png" class="logo">
+		</div>
+		<div class="contenedor2">	
+			<br><br><br><br>
+			<div class="centrar"><h3>Números telefónicos de emergencias</h3></div><br>
+			<div>
+				Emergencias
+				<a href="tel:123" class="telefono">123</a>
+			</div>
+			<hr>
+			<div>
+				Policía
+				<a href="tel:112" class="telefono">112</a>
+			</div>
+			<hr>
+			<div>
+				Bomberos
+				<a href="tel:119" class="telefono">119</a>
+			</div>
+			<hr>
+			<div>
+				Defensa Civil
+				<a href="tel:144" class="telefono">144</a>
+			</div>
+			<hr>
+			<div>
+				Cruz Roja
+				<a href="tel:132" class="telefono">132</a>
+			</div>
+			<hr>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script  type="text/javascript" language="javascript">
+			document.addEventListener("deviceready", onDeviceReady, false);
+
+			function onDeviceReady() {
+	        	$( ".logo" ).on( "click", function(){window.location.assign("index.html");});
+	        }
+		</script>
+	</body>
+</html>

@@ -14,7 +14,7 @@
 		<div class="navbar">
 			<img src ="img/home.png" class="logo">
 			<img src ="img/gear.png" class="icono" id="settings">
-			<img src ="img/info.png" class="icono" id="info">				
+			<img src ="img/phone.png" class="icono" id="telefono">	
 		</div>
 		<br><br><br><br>
 		<div class="contenedor">
@@ -164,7 +164,8 @@
 			document.addEventListener("deviceready", onDeviceReady, false);
 
 			function onDeviceReady() {
-				navigator.geolocation.getCurrentPosition(getlocation, failgeo, { maximumAge: 5000, timeout: 5000, enableHighAccuracy: true }); 
+				navigator.geolocation.getCurrentPosition(getlocation, failgeo, { maximumAge: 5000, timeout: 5000, enableHighAccuracy: true });
+				$( "#telefono" ).on( "click", function(){window.location.assign("emergencias.html");});
 				$( ".logo" ).on( "click", function(){window.location.assign("index.html");});
 	        	$( "#settings" ).on( "click", function(){window.location.assign("configurar.html");});
 	        	ajax(
