@@ -27,5 +27,5 @@
 	<plugin name="cordova-plugin-x-socialsharing" spec="5.0.7" />
 	<plugin name="org.apache.cordova.device" source="pgb" spec="0.3.0" />
 	<plugin name="org.apache.cordova.dialogs" source="pgb" spec="0.3.0" />
-	<plugin name="org.apache.cordova.geolocation" source="pgb" spec="0.3.2" />
+	<plugin name="org.apache.cordova.geolocation" source="pgb" spec="0.3.12" />
 </widget>
